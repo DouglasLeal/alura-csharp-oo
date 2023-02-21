@@ -23,10 +23,21 @@ namespace ByteBank.Models
 
         public bool Sacar(double valor)
         {
-            if (valor > saldo) return false;
+            if (valor > saldo || valor <= 0) return false;
 
             saldo -= valor;
             return true;
+        }
+
+        public bool Transferir(double valor, ContaCorrente destino)
+        {
+            if (Sacar(valor))
+            {
+                destino.Depositar(valor);
+                return true;
+            }
+
+            return false;
         }
     }
 }
