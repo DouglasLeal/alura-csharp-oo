@@ -9,8 +9,13 @@ namespace ByteBank.Models
     public class ContaCorrente
     {
         public int numero_agencia;
-        public string conta;
-        public string titulas;
+        public int conta;
+        public string titular;
         public double saldo;
+
+        public void Depositar(double valor)
+        {
+            saldo += valor;
+        }
     }
 }
