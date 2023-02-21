@@ -13,9 +13,20 @@ namespace ByteBank.Models
         public string titular;
         public double saldo;
 
-        public void Depositar(double valor)
+        public bool Depositar(double valor)
         {
+            if (valor <= 0) return false;
+
             saldo += valor;
+            return true;
+        }
+
+        public bool Sacar(double valor)
+        {
+            if (valor > saldo) return false;
+
+            saldo -= valor;
+            return true;
         }
     }
 }

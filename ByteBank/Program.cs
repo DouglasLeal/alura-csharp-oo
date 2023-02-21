@@ -12,3 +12,7 @@ Console.WriteLine($"Titular: {c1.titular} | Saldo: {c1.saldo}");
 c1.Depositar(100);
 
 Console.WriteLine($"Titular: {c1.titular} | Saldo: {c1.saldo}");
+
+c1.Sacar(50);
+
+Console.WriteLine($"Titular: {c1.titular} | Saldo: {c1.saldo}");
