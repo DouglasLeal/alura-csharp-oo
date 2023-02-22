@@ -8,8 +8,6 @@ namespace ByteBank.Models
 {
     public class ContaCorrente
     {
-
-
         private int _numeroAgencia;
         public int NumeroAgencia 
         { 
@@ -22,12 +20,14 @@ namespace ByteBank.Models
 
         public Cliente? Titular { get; set; }
         private double _saldo = 100;
+        public static int TotalContasCriadas { get; private set; }
 
         public ContaCorrente(int numeroAgencia, string? conta, Cliente? titular)
         {
             NumeroAgencia = numeroAgencia;
             Conta = conta;
             Titular = titular;
+            TotalContasCriadas += 1;
         }
 
         public bool Depositar(double valor)
