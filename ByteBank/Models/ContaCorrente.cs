@@ -10,8 +10,8 @@ namespace ByteBank.Models
     {
         public int numero_agencia;
         public int conta;
-        public string titular;
-        public double saldo;
+        public Cliente titular;
+        public double saldo = 100;
 
         public bool Depositar(double valor)
         {
@@ -38,6 +38,11 @@ namespace ByteBank.Models
             }
 
             return false;
+        }
+
+        public override string ToString()
+        {
+            return $"Titular: {titular.nome} | Saldo: {saldo} | Agência: {numero_agencia} | Conta: {conta}";
         }
     }
 }
