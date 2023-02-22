@@ -8,24 +8,32 @@ namespace ByteBank.Models
 {
     public class ContaCorrente
     {
-        public int numero_agencia;
-        public int conta;
-        public Cliente titular;
-        public double saldo = 100;
+        private int _numeroAgencia;
+        public int NumeroAgencia 
+        { 
+            get { return _numeroAgencia; } 
+            set { if(value > 0) _numeroAgencia = value; } 
+        }
+
+        //private string _conta;
+        public string? Conta { get; set; }
+
+        public Cliente? Titular { get; set; }
+        private double _saldo = 100;
 
         public bool Depositar(double valor)
         {
             if (valor <= 0) return false;
 
-            saldo += valor;
+            _saldo += valor;
             return true;
         }
 
         public bool Sacar(double valor)
         {
-            if (valor > saldo || valor <= 0) return false;
+            if (valor > _saldo || valor <= 0) return false;
 
-            saldo -= valor;
+            _saldo -= valor;
             return true;
         }
 
@@ -40,9 +48,21 @@ namespace ByteBank.Models
             return false;
         }
 
+        public void SetSaldo(double valor)
+        {
+            if (valor < 0) return;
+
+            _saldo = valor;
+        }
+
+        public double GetSaldo()
+        {
+            return _saldo;
+        }
+
         public override string ToString()
         {
-            return $"Titular: {titular.nome} | Saldo: {saldo} | Agência: {numero_agencia} | Conta: {conta}";
+            return $"Titular: {Titular?.Nome} | Saldo: {_saldo} | Agência: {NumeroAgencia} | Conta: {Conta}";
         }
     }
 }
