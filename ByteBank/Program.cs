@@ -1,4 +1,6 @@
 ﻿using ByteBank.Models;
 
-var c1 = new ContaCorrente();
-var c2 = new ContaCorrente();
+var cliente1 = new Cliente("Douglas", "12345678911", "Programador");
+var conta1 = new ContaCorrente(1001, "101-x", cliente1);
+
+Console.WriteLine(conta1.ToString());
